@@ -1,4 +1,3 @@
-// src/seed.js
 import axios from 'axios';
 import dotenv from 'dotenv';
 import supabase from './supabaseClient.js';
