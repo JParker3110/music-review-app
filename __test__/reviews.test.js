@@ -1,10 +1,10 @@
 import request from 'supertest';
-import app from '../src/app/app.js';
+import app from '../src/app.js';
 const request = require('supertest');
 const express = require('express');
 const mongoose = require('mongoose');
 const Review = require('../models/Review');
-const reviewRouter = require('../src/routes/reviews.js');
+const reviewRouter = require('../src/app/routes/reviews.js');
 
 const app = express();
 app.use(express.json());
