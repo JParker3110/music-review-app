@@ -1,8 +1,17 @@
 import express from 'express';
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
 import reviewsRouter from './routes/reviews.js';
-import supabase from './supabaseClient.js';
+
+dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
+
+// Correctly read environment variables
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(express.json());
 
@@ -46,5 +55,9 @@ app.get('/test-supabase', async (req, res) => {
 });
 
 app.use('/api/reviews', reviewsRouter); // Use the router
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
 
 export default app;
