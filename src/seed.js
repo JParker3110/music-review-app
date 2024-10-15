@@ -5,17 +5,22 @@ import supabase from './supabaseClient.js';
 dotenv.config();
 
 const getSpotifyToken = async () => {
-  const response = await axios.post('https://accounts.spotify.com/api/token', null, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': `Basic ${Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64')}`
-    },
-    params: {
-      grant_type: 'client_credentials'
-    }
-  });
-  return response.data.access_token;
+  try {
+    const response = await axios.post('https://accounts.spotify.com/api/token', null, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': `Basic ${Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64')}`
+      },
+      params: {
+        grant_type: 'client_credentials'
+      }
+    });
+    return response.data.access_token;
+  } catch (error) {
+    console.error('Error getting Spotify token:', error);
+  }
 };
+
 
 const fetchMusicData = async (token) => {
   const response = await axios.get('https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M', {
@@ -28,7 +33,8 @@ const fetchMusicData = async (token) => {
     artist: item.track.artists[0].name,
     album: item.track.album.name,
     release_date: item.track.album.release_date,
-    genre: 'R&B' // Example genre, you can adjust this
+    genre: 'R&B', // Example genre, you can adjust this
+    cover_url: item.track.album.images[0].url // Adding album cover URL
   }));
 };
 
