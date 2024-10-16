@@ -33,8 +33,8 @@ const fetchMusicData = async (token) => {
     artist: item.track.artists[0].name,
     album: item.track.album.name,
     release_date: item.track.album.release_date,
-    genre: 'R&B', // Example genre, you can adjust this
-    cover_url: item.track.album.images[0].url // Adding album cover URL
+    genre: 'R&B', 
+    cover_url: item.track.album.images[0].url 
   }));
 };
 
