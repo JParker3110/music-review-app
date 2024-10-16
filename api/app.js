@@ -7,8 +7,6 @@ dotenv.config();
 
 const app = express();
 
-
-
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -24,18 +22,21 @@ app.get('/', (req, res) => {
           body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            color: #333;
+            color: black;
             text-align: center;
             padding: 50px;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-creative-headset-song-king-competition-poster-background-material-image_153272.jpg');
+            background-size: cover;
+            background-position: center;
           }
           h1 {
-            color: #ff6600;
+            color: black;
           }
         </style>
       </head>
       <body>
-        <h1>Welcome to the Music Review App!</h1>
-        <p>Discover and share your thoughts on the latest music.</p>
+        <h1>Welcome to my Music Review App!</h1>
+        <p>Listen and share your thoughts on some of my favorite songs.</p>
       </body>
     </html>
   `);
@@ -54,8 +55,6 @@ app.get('/test-supabase', async (req, res) => {
   res.status(200).json(data);
 });
 
-app.use('/api/reviews', reviewsRouter); 
-
-
+app.use('/api/reviews', reviewsRouter);
 
 export default app;
