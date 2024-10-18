@@ -8,7 +8,6 @@ dotenv.config();
 
 const app = express();
 
-
 app.use(cors());
 
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -17,6 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(express.json());
 
+// Homepage route
 app.get('/', (req, res) => {
   res.send(`
     <html>
@@ -41,11 +41,11 @@ app.get('/', (req, res) => {
       <body>
         <h1>Welcome to the Music Review App!</h1>
         <p>Discover and share your thoughts on the latest music.</p>
+        <a href="http://localhost:3000/music">Go to Music Page</a> <!-- Update this link -->
       </body>
     </html>
   `);
 });
-
 app.get('/test-supabase', async (req, res) => {
   const { data, error } = await supabase
     .from('reviews')
@@ -59,7 +59,6 @@ app.get('/test-supabase', async (req, res) => {
   res.status(200).json(data);
 });
 
-
 app.get('/api/music', async (_req, res) => {
   const { data, error } = await supabase
     .from('music')
@@ -71,7 +70,6 @@ app.get('/api/music', async (_req, res) => {
 
   res.status(200).json(data);
 });
-
 
 app.use('/api/reviews', reviewsRouter);
 
