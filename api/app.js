@@ -16,7 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(express.json());
 
-// Homepage route
+
 app.get('/', (req, res) => {
   res.send(`
     <html>

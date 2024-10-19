@@ -55,10 +55,10 @@ app.get('/albums', async (req, res) => {
   }
 });
 
-// New GET endpoint for fetching reviews
+
 reviewsRouter.get('/reviews', async (req, res) => {
   try {
-    // Replace with your logic to fetch reviews from your database
+    
     const reviews = [
       { id: 1, song: 'Song A', review: 'Great song!', rating: 5 },
       { id: 2, song: 'Song B', review: 'Not bad', rating: 3 }
