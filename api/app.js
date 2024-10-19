@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
       <body>
         <h1>Welcome to my Music Review App!</h1>
         <p>Discover and share your thoughts on the latest music.</p>
-        <a href="music-review-frontend-app.vercel.app">Go to Music Page</a> <!-- Update this link -->
+        <a href="https://music-review-frontend-app.vercel.app">Go to Music Page</a> <!-- Update this link -->
       </body>
     </html>
   `);
